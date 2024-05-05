@@ -1,10 +1,17 @@
 import frontend
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from pydantic import BaseModel
 import uvicorn
 
 app = FastAPI()
 
 #####################################################################
+
+
+class Inputdata(BaseModel):
+    num1: float
+    num2: float
+
 
 @app.get('/home')
 def read_root():
@@ -12,13 +19,20 @@ def read_root():
 
 
 @app.get('/sum')
-def somma(num1: float, num2: float):
-    res = round(num1+num2, 2)
+def somma_get(data: Inputdata = Depends()):
+    res = round(data.num1+data.num2, 2)
     print(res)
     return {'result': res}
 
+@app.post('/sum')
+def somma_post(data: Inputdata = Depends):
+    res = round(data.num1+data.num2, 2)
+    print(res)
+    return {'result': res}
 
 #####################################################################
+
+
 frontend.init(app)
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@ async def test(num1, num2):
 
 async def compute_and_update_result(num1, num2):
     somma = await test(num1, num2)
-    #ui.markdown(f'risultato : {somma}')
+    # ui.markdown(f'risultato : {somma}')
     ui.notify(f'risultato : {somma}')
     return somma
 
