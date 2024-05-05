@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from nicegui import app, ui
 import aiohttp
 
+
 async def test(num1, num2):
     async with aiohttp.ClientSession() as session:
         async with session.get(f'http://localhost:8000/sum?num1={num1}&num2={num2}') as response:
@@ -31,7 +32,7 @@ def init(fastapi_app: FastAPI) -> None:
         #button = ui.button('risultato', on_click=lambda: ui.notify("IL RISULTATO DELLA SOMMA E'"+str(num1.value+num2.value)))  ## this works!
         button = ui.button('risultato', on_click=lambda: compute_and_update_result(num1.value, num2.value))
         result = await compute_and_update_result(num1.value, num2.value)
-        ui.markdown(f"#### result= {result}")
+        ui.markdown(f"#### result= {result}") # didn't update
 
 
     @ui.page('/pag2')
