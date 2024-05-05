@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from nicegui import app, ui
 import aiohttp
 
-
 async def test(num1, num2):
     async with aiohttp.ClientSession() as session:
         async with session.get(f'http://localhost:8000/sum?num1={num1}&num2={num2}') as response:
