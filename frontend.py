@@ -13,6 +13,7 @@ async def compute_and_update_result(num1, num2):
     somma = await test(num1, num2)
     #ui.markdown(f'risultato : {somma}')
     ui.notify(f'risultato : {somma}')
+    return somma
 
 
 def init(fastapi_app: FastAPI) -> None:
@@ -29,6 +30,8 @@ def init(fastapi_app: FastAPI) -> None:
         num2 = ui.number(label='Secondo numero', value=15.2, format='%.2f',).bind_value(app.storage.user, 'num2')
         #button = ui.button('risultato', on_click=lambda: ui.notify("IL RISULTATO DELLA SOMMA E'"+str(num1.value+num2.value)))  ## this works!
         button = ui.button('risultato', on_click=lambda: compute_and_update_result(num1.value, num2.value))
+        result = await compute_and_update_result(num1.value, num2.value)
+        ui.markdown(f"#### result= {result}")
 
 
     @ui.page('/pag2')
