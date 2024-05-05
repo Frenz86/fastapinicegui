@@ -20,8 +20,8 @@ def init(fastapi_app: FastAPI) -> None:
         ui.checkbox('dark mode').bind_value(app.storage.user, 'dark_mode')
         ui.markdown('## Hello, ciuccelloni!')
         
-        num1 = ui.number(label='Primo numero', value=5.6, format='%.2f',)
-        num2 = ui.number(label='Secondo numero', value=15.2, format='%.2f',)
+        num1 = ui.number(label='Primo numero', value=5.6, format='%.2f',).bind_value(app.storage.user, 'num1')
+        num2 = ui.number(label='Secondo numero', value=15.2, format='%.2f',).bind_value(app.storage.user, 'num2')
         #button = ui.button('risultato', on_click=lambda: ui.notify("IL RISULTATO DELLA SOMMA E'"+str(num1.value+num2.value)))  ## this works!
         result = await test(num1.value, num2.value)
         button = ui.button('risultato', on_click=lambda: ui.notify("IL RISULTATO DELLA SOMMA E'"+str(result)))                  ## this don't work when I change input!
