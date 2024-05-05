@@ -13,7 +13,7 @@ async def test(num1, num2):
 
 def init(fastapi_app: FastAPI) -> None:
     @ui.page('/')
-    async def page1():
+    async def home():
         ui.label('Hello, FastAPI! Pag1')
 
         # NOTE dark mode will be persistent for each user across tabs and server restarts
