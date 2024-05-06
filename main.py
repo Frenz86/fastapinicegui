@@ -24,6 +24,7 @@ def somma_get(data: Inputdata = Depends()):
     print(res)
     return {'result': res}
 
+
 @app.post('/sum')
 def somma_post(data: Inputdata = Depends):
     res = round(data.num1+data.num2, 2)
