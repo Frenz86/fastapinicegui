@@ -13,12 +13,17 @@ async def apicall(num1, num2):
 def init(fastapi_app: FastAPI) -> None:
     @ui.page('/')
     async def home():
-        ui.label('Hello, FastAPI! Pag1')
+        ui.label('Hello questo template cambierà le cose')
         # NOTE dark mode will be persistent for each user across tabs and server restarts
         ui.dark_mode().bind_value(app.storage.user, 'dark_mode')
         ui.checkbox('dark mode').bind_value(app.storage.user, 'dark_mode')
         ui.markdown('## Hello, ciuccelloni!')
-        
+
+        # image add
+        ui.separator()
+        ui.image('https://www.bitdoze.com/_astro/streamlit-vs-nicegui.CbrH4KaA_2qjgFm.webp'\
+                ).classes('h-auto max-w-lg rounded-lg flex justify-center')
+
         num1 = ui.number(label='Primo numero', value=5.6, format='%.2f',)
         num2 = ui.number(label='Secondo numero', value=15.2, format='%.2f',)
 
