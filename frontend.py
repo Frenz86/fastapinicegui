@@ -30,11 +30,10 @@ def init(fastapi_app: FastAPI) -> None:
         async def handle_click():
             result = await apicall(num1.value, num2.value)
             ui.notify(f'risultato : {result}')
-            markdown.content = f"#### result = {result}"
+            markdown.content = f"### result = {result}"
 
         ui.button('risultato', on_click=handle_click)
         markdown = ui.markdown()
-
 
     @ui.page('/pag2')
     async def page2():

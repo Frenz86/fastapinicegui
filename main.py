@@ -1,9 +1,12 @@
 import frontend
 from fastapi import FastAPI, Depends
+from fastapi.responses import ORJSONResponse
 from pydantic import BaseModel
 import uvicorn
 
-app = FastAPI()
+app = FastAPI(default_response_class=ORJSONResponse,
+              title="nicegui + Fastapi",
+              )
 
 #####################################################################
 

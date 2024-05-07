@@ -1,0 +1,6 @@
+orjson
+fastapi
+uvicorn
+pydantic
+nicegui
+aiohttp
